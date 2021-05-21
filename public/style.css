@@ -1,113 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-  display: flex;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  color: #3b4252;
-  letter-spacing: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
-  max-width: 960px;
-  margin: auto;
-  padding: 1rem;
-}
-
-header {
-  border-bottom: 1px solid #eee;
-}
-
-header a {
-  color: inherit;
-  text-decoration: none;
-}
-
-header a:hover {
-  text-decoration: underline;
-}
-
-nav ul {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-nav li.title {
-  flex-grow: 5;
-  text-align: left;
-  font-weight: bold;
-  font-size: 1.4rem;
-  color: #3b4252;
-}
-
-nav li {
-  flex-grow: 1;
-  align-self: center;
-  text-align: right;
-  color: #4c566a;
-}
-
-.fa-heart {
-  color: deeppink;
-}
-
-main {
-  flex: 1;
-}
-
-footer {
-  margin-top: 4rem;
-  border-top: 1px solid #eee;
+    width: 70%;
+    margin: 100px auto auto auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 h1 {
-  margin-top: 4rem;
-  font-weight: normal;
+    font-size: 50px;
+    text-align: center;
 }
 
-i {
-  margin-right: 0.5rem;
+.add {
+    width: fit-content;
+    padding: 10px 15px;
+    background-color: #00A751;
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.add:hover {
+    background-color: #006330;
+}
+
+.fa-plus-circle {
+    padding-right: 5px;
+}
+
+.title-list,
+.info-list {
+    display: grid;
+    grid-template-columns: 25% 10% 25% 15% 25%;
+    padding: 20px 15px;
+    font-size: 20px;
+    gap: 10px;
+}
+
+.title-list {
+    font-weight: 600;
+    color: white;
+    background-color: #333A40;
 }
 
 a {
-  color: #5e81ac;
+    text-decoration: none;
 }
 
-a:hover {
-  color: #81a1c1;
-  text-decoration: underline;
+.far,
+.fas {
+    padding-right: 5px;
 }
 
-table {
-  margin-left: 0;
+.edit {
+    font-weight: 500;
+    color: #01A4B6;
 }
 
-td {
-  border: 0;
-  padding: 0 1em 0.5em 0;
+.remove {
+    font-weight: 500;
+    color: red;
+    border: none;
+    font-size: 20px;
+    background-color: Transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
 
-td:first-child {
-  width: 1%;
-  white-space: nowrap;
+.info-list:hover {
+    background-color: #ECECEC;
 }
 
-ul {
-  list-style-position: inside;
-  padding-left: 0;
+.edit:hover {
+    color: #017683;
 }
 
-li {
-  list-style-type: none;
-  margin-bottom: 0.2rem;
+.remove:hover {
+    color: #900;
 }
 
-code {
-  padding: 0.2rem;
-  margin: 0rem 0.2rem;
-  border-radius: 0.2rem;
-  background: #e5e9f0;
+
+/* CSS modal */
+
+.modal-show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    display: none;
+}
+
+.modal {
+    max-width: fit-content;
+    margin: 0px auto;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    background-color: white;
+    opacity: 0;
+}
+
+.modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    font-weight: 500;
+}
+
+.modal-button {
+    padding: 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px
+}
+
+.close,
+.accept {
+    padding: 8px 15px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.close {
+    background-color: #5C636A;
+}
+
+.accept {
+    background-color: #0B5ED7;
+}
+
+.close:hover {
+    background-color: #3c4146;
+    cursor: pointer;
+}
+
+.accept:hover {
+    background-color: #084296;
+    cursor: pointer;
+}
+
+.fa-times {
+    color: grey;
+}
+
+.fa-times:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.fade-in {
+    margin-top: 50px;
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-duration: 0.2s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+        margin-top: 0px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 50px;
+    }
+}
+
+.show {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    animation-name: show-up;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-duration: 0.2s;
+}
+
+@keyframes show-up {
+    0% {
+        background-color: white;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
 }
